@@ -1,10 +1,34 @@
 import { useContext } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
 
 export default function Layout() {
 
-    const {user} = useContext(AppContext)
+    const {user, token, setUser, setToken} = useContext(AppContext)
+    
+    const navigate = useNavigate();
+    async function handleLogout(e){
+        
+        e.preventDefault();
+
+        const res = await fetch('/api/logout', {
+            method:"POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        const data = await res.json()
+        console.log(data);
+
+        if(res.ok){
+            setUser(null);
+            setToken(null);
+            localStorage.removeItem("token");
+            navigate('/');
+
+        }
+    }
 
     return(
        <>
@@ -18,8 +42,11 @@ export default function Layout() {
                     <Link to="/login" className="nav-link">Login</Link>
                 </div>
                 ) : (
-                <div>
+                <div className="space-x-4 flex items-center">
                     <p className="text-slate-400 text-m">Welcome back {user.name}</p>
+                    <form onSubmit={handleLogout}>
+                        <button className="nav-link">Logout</button>
+                    </form>
                 </div>
             )}
         </nav>
