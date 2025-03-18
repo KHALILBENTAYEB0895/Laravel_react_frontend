@@ -15,8 +15,8 @@ const user = useContext(AppContext)
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route index element={<Home />}/>
-          <Route path="register" element={user ? <Home/> : <Register />} />
-          <Route path="login" element={user ? <Home/> :<Login />} />
+          <Route path="register" element={!user ? <Home/> : <Register />} />
+          <Route path="login" element={!user ? <Home/> :<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
