@@ -51,7 +51,7 @@ export default function Register() {
             </div>
 
             <div>
-                <input type="text"
+                <input type="email"
                  placeholder="Email"
                  value={formData.email}
                  onChange={(e) => setFormData({...formData, email: e.target.value})}
