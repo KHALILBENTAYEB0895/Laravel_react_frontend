@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { data } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Home() {
 
@@ -35,7 +35,7 @@ export default function Home() {
                                 .toLocaleTimeString()}
                             </small>
                         </div>
-                        {/* here !!! */}
+                        <Link to={`/posts/${post.id}`} className="bg-blue-500 text-white text-sm rounded-lg px-3 py-1">read more</Link>
                     </div>
                     <p>{post.body}</p>
                 </div>
