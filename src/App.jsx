@@ -21,6 +21,7 @@ const {user} = useContext(AppContext)
           <Route path="login" element={user ? <Home/> : <Login />} />
           <Route path="create" element={user ? <Create/> : <Login/>} />
           <Route path="/posts/:id" element={<Show/>} />
+          <Route path="/posts/update/:id" element={} />
         </Route>
       </Routes>
     </BrowserRouter>
