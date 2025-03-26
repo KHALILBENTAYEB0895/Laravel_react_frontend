@@ -9,6 +9,11 @@ export default function Show(){
 
     const [post, setPost] = useState(null)
 
+    async function handleDelete(e){
+        e.preventDefault();
+
+    }
+
     async function getPost(){
         const res = await fetch(`/api/posts/${id}`);
         const data = await res.json();
@@ -40,10 +45,18 @@ export default function Show(){
                 <p>{post.body}</p>
                 {user.id === post.user_id && 
                 <div className="flex items-center justify-end gap-4">
-                <Link to={`/posts/update/${post.id}`} className="bg-green-500 text-white text-sm rounded-lg px-3 py-1">update</Link>
+                <Link to={`/posts/update/${post.id}`}
+                 className="bg-green-500 text-white text-sm rounded-lg px-3 py-1"
+                >update</Link>
+
+                <form action="">
+                    <button className="bg-red-500 text-white text-sm rounded-lg px-3 py-1">
+                        Delete
+                    </button>
+                </form>
+
                 </div>
                 }
-                {/* Here 22:50 */}
             </div>
          : <p className="title">Post not found !</p> }
     </>
