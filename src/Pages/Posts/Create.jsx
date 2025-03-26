@@ -52,7 +52,7 @@ export default function Create(){
                 <div>
                     <textarea rows="6"
                      placeholder="Post Content"
-                     value={formData.content}
+                     value={formData.body}
                      onChange={(e)=>setFormData({...formData, body: e.target.value})}>
                     </textarea>
                     {errors.body && <p className="error">{errors.body[0]}</p>}
