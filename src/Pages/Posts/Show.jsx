@@ -43,7 +43,7 @@ export default function Show(){
                     </div>
                 </div>
                 <p>{post.body}</p>
-                {user.id === post.user_id && 
+                {user && user.id === post.user_id && 
                 <div className="flex items-center justify-end gap-4">
                 <Link to={`/posts/update/${post.id}`}
                  className="bg-green-500 text-white text-sm rounded-lg px-3 py-1"
